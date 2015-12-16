@@ -1,0 +1,10 @@
+@import "_base.scss";
+
+.con{
+	width: 150px;
+	height: 150px;
+	background: #FFF;
+	border:3px solid gray;
+	@include transform(rotate(45deg));
+	
+}

@@ -1,0 +1,17 @@
+body {
+  background-color: teal; }
+  body #a {
+    width: 1200px;
+    height: 200px;
+    border: 1px solid teal; }
+
+.con {
+  width: 150px;
+  height: 150px;
+  background: #FFF;
+  border: 3px solid gray;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
