@@ -1,0 +1,56 @@
+@import 'bourbon';
+body{
+	background: #dddddd;
+}
+.jdui_switch_group_s { 
+	@include transform(translateY(20px));
+	&::after { 
+		clear: both; 
+		content: ""; 
+		display: table; 
+	}
+	.jdui_switch_group_in { float: left; }
+	input[type=checkbox] { 
+		position: absolute; 
+		left: -99em; 
+		@include user-select(none);
+		opacity: 0; 
+	}
+	.jdui_switch_wrap { 
+		position: relative; 
+		left: 0; 
+		top: 0; 
+		width: 45px; 
+		height: 18px;  
+		font-size: 12px; 
+		background: #424853;
+		border-radius: 20px;
+		@include transition(all .3s ease);
+		.jdui_switch_btn { 
+			position: absolute; 
+			left: -1px; 
+			top: -5px; 
+			width: 25px; 
+			height: 25px; 
+			border-radius: 21px; 
+			border-width: 1px; 
+			border-style: solid; 
+			@include transition(all .3s ease);
+		}
+		.jdui_switch_btn { 
+			border-color: #DCDCDC; 
+			background-color: white; 
+		}
+	}
+	input:checked + .jdui_switch_wrap { 
+		background-color: #3288e0; 
+		.jdui_switch_btn { 
+			left: 20px; 
+		}
+	}
+	.jdui_switch_btn { 
+		border-color: #DCDCDC; 
+		background-color: white;  
+	} 
+
+}

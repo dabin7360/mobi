@@ -1,0 +1,103 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>焦点图</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.demo_wrap{
+			width: 100%;
+			position: relative;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+		.swipe_wrap{
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+		.swipe_tin{
+			width:100%;
+			float: left;
+			position: relative;
+		}
+		.swipe_dot{
+			position: absolute;
+			left: 50%;
+			transform:translateX(-50%);
+			bottom:0;
+		}
+		.swipe_dot li{
+			width: 10px;
+			height: 10px;
+			display: inline-block;
+			margin:3px;
+			border-radius: 100%;
+			background: #FFF;
+		}
+		.swipe_dot li.cur{
+			background: teal;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>焦点图</h1>
+	</header>
+	<div class="demo_wrap" id="swipe">
+		<div class="swipe_wrap">
+			<div class="swipe_tin">
+				<img src="../resource/jdt/1.jpg" width="100%"/>
+			</div>
+			<div class="swipe_tin">
+				<img src="../resource/jdt/2.jpg" width="100%"/>
+			</div>
+			<div class="swipe_tin">
+				<img src="../resource/jdt/3.jpg" width="100%"/>
+			</div>
+			<div class="swipe_tin">
+				<img src="../resource/jdt/4.jpg" width="100%"/>
+			</div>
+		</div>
+		<ul class="swipe_dot">
+			<li class="cur"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/lib/swipe.js"></script>
+
+	<script>
+	/**
+		startSlide: 4,  //起始图片切换的索引位置
+		auto: 3000, //设置自动切换时间，单位毫秒
+		continuous: true,  //无限循环的图片切换效果
+		disableScroll: true,  //阻止由于触摸而滚动屏幕
+		stopPropagation: false,  //停止滑动事件
+		callback: function(index, element) {},  //回调函数，切换时触发
+		transitionEnd: function(index, element) {}  //回调函数，切换结束调用该函数。
+
+		prev()：上一页
+		next()：下一页
+		getPos()：获取当前页的索引
+		getNumSlides()：获取所有项的个数
+		slide(index, duration)：滑动方法
+	**/
+		var doms = {
+			dot : $('.swipe_dot li')
+		};
+		var slider = Swipe(document.getElementById('swipe'),{
+			auto : 3000,
+			continuous : true,
+			callback:function(index,element){
+				doms.dot.removeClass('cur');
+				doms.dot.eq(index).addClass('cur');
+			}
+		})
+	</script>
+</body>
+</html>

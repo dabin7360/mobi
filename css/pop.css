@@ -1,0 +1,60 @@
+.db-pop {
+  opacity: 0;
+  transition: opacity 1s;
+  position: absolute;
+  left: 50%;
+  top: -webkit-calc(50% - 50px);
+  top: calc(50% - 50px);
+  width: 95%;
+  padding-bottom: 15px;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #96b97d;
+  box-shadow: 0 0 1px #FFF;
+  z-index: 1; }
+  .db-pop .pop-con {
+    padding: 10px 0 15px 0;
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px; }
+    .db-pop .pop-con .pop-con-title {
+      height: 38px;
+      line-height: 25px; }
+  .db-pop .cancel {
+    display: inline-block;
+    width: 35%;
+    height: 35px;
+    line-height: 35px;
+    background: gray;
+    border-radius: 5px;
+    color: #546a79; }
+  .db-pop .confirm {
+    display: inline-block;
+    width: 35%;
+    height: 35px;
+    line-height: 35px;
+    background: #3288e0;
+    border-radius: 5px; }
+  .db-pop .pop_btn {
+    display: inline-block;
+    width: 95%; }
+    .db-pop .pop_btn .cancel {
+      width: 45%;
+      float: left; }
+    .db-pop .pop_btn .confirm {
+      width: 45%;
+      float: right; }
+
+.overlay {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0; }

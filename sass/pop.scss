@@ -1,0 +1,66 @@
+@import "bourbon";
+//pop
+.db-pop{
+  opacity: 0;
+  transition:opacity 1s;
+  position: absolute;
+  left:50%;
+  @include calc(top,"50% - 50px")
+  width: 95%;
+  padding-bottom: 15px;
+  text-align: center;
+  @include transform(translate(-50%,-50%));
+  background-color: #96b97d;
+  box-shadow: 0 0 1px #FFF;
+  z-index: 1;
+  .pop-con{
+    padding: 10px 0 15px 0;
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px;
+    .pop-con-title{
+      height: 38px;
+      line-height: 25px;
+    } 
+  }
+  .cancel{
+    display: inline-block;
+    width:35%;
+    height: 35px;
+    line-height: 35px;
+    background: gray;
+    border-radius: 5px;
+    color:#546a79;
+  }
+  .confirm{
+    display: inline-block;
+    width:35%;
+    height: 35px;
+    line-height: 35px;
+    background: #3288e0;
+    border-radius: 5px;
+  }
+  .pop_btn{
+    display: inline-block;
+    width:95%;
+    .cancel{
+      width: 45%;
+      float: left;
+    }
+    .confirm{
+      width: 45%;
+      float: right;
+    }
+  }
+}
+
+.overlay{
+  display: none;
+  position: absolute;
+  left: 0;
+  right:0;
+  top:0;
+  bottom:0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 0;
+}

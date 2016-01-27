@@ -1,44 +1,78 @@
-var PreLoad=function(a,b){var c=b||{};this.source=a,this.count=0,this.total=a.length,this.onload=c.onload,this.prefix=c.prefix||"",this.init()};PreLoad.prototype.init=function(){var a=this;a.source.forEach(function(b){var c=b.replace(/[#\?].*$/,'').substr(b.lastIndexOf(".")+1).toLowerCase(),d=a.prefix+b;switch(c){case"js":a.script.call(a,d);break;case"css":a.stylesheet.call(a,d);break;case"svg":case"jpg":case"gif":case"png":case"jpeg":a.image.call(a,d)}})},PreLoad.prototype.getProgress=function(){return Math.round(this.count/this.total*100)},PreLoad.prototype.image=function(a){var b=document.createElement("img");this.load(b,a),b.src=a},PreLoad.prototype.stylesheet=function(a){var b=document.createElement("link");this.load(b,a),b.rel="stylesheet",b.type="text/css",b.href=a,document.head.appendChild(b)},PreLoad.prototype.script=function(a){var b=document.createElement("script");this.load(b,a),b.type="text/javascript",b.src=a,document.head.appendChild(b)},PreLoad.prototype.load=function(a,b){var c=this;a.onload=a.onerror=a.onabort=function(a){c.onload&&c.onload({count:++c.count,total:c.total,item:b,type:a.type})}};
-				
-var resources = [
-	'js/zepto.min.js', 'js/package.js', 'css/animate.min.css',
-	'images/p1-curve.png',
-	'images/p2-backdrop-dark.png',
-	'images/p2-backdrop.png',
-	'images/p3-backdrop-dark-2.png',
-	'images/p3-backdrop.png',
-	'images/p4-backdrop-dark.png',
-	'images/p4-backdrop.png',
-	'images/p5-backdrop-dark.png',
-	'images/p5-backdrop.png',
-	'images/pack1-s7360cc0655.png',
-	'images/pack2-sa3afc76d41.png',
-	'images/pack3-s46bac2f2f8.png',
-	'images/pack4-sf9f33bdcc8.png',
-	'images/pack5-s9e23033a52.png'
-]
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        //AMD
+        define(factory);
+    } else if (typeof exports === 'object') {
+        //Node, CommonJS之类的
+        module.exports = factory();
+    } else {
+        //浏览器全局变量(root 即 window)
+        root.resLoader = factory(root);
+    }
+}(this, function () {
+    var isFunc = function(f){
+        return typeof f === 'function';
+    }
+    //构造器函数
+    function resLoader(config){
+        this.option = {
+            resourceType : 'image', //资源类型，默认为图片
+            baseUrl : './', //基准url
+            resources : [], //资源路径数组
+            onStart : null, //加载开始回调函数，传入参数total
+            onProgress : null, //正在加载回调函数，传入参数currentIndex, total
+            onComplete : null //加载完毕回调函数，传入参数total
+        }
+        if(config){
+            for(i in config){
+                this.option[i] = config[i];
+            }
+        }
+        else{
+            alert('参数错误！');
+            return;
+        }
+        this.status = 0; //加载器的状态，0：未启动   1：正在加载   2：加载完毕
+        this.total = this.option.resources.length || 0; //资源总数
+        this.currentIndex = 0; //当前正在加载的资源索引
+    };
 
-new PreLoad(resources, {
-	onload: function(load) {
-		var count = load.count,
-			total = load.total,
-			percent = Math.ceil(100 * count / total)
+    resLoader.prototype.start = function(){
+        this.status = 1;
+        var _this = this;
+        var baseUrl = this.option.baseUrl;
+        for(var i=0,l=this.option.resources.length; i<l; i++){
+            var r = this.option.resources[i], url = '';
+            if(r.indexOf('http://')===0 || r.indexOf('https://')===0){
+                url = r;
+            }
+            else{
+                url = baseUrl + r;
+            }
 
-		//DOM变化
-		var progressBar = document.querySelector('#progress')
-		progressBar.style.width = 48 + percent * 2 + 'px'
-		progressBar.innerHTML = percent + '%'
+            var image = new Image();
+            image.onload = function(){_this.loaded();};
+            image.onerror = function(){_this.loaded();};
+            image.src = url;
+        }
+        console.log(image.src)
+        if(isFunc(this.option.onStart)){
+            this.option.onStart(this.total);
+        }
+    }
 
-		//LOAD COMPLETE
-		if (count == total) {
-			var el = progressBar.parentNode.parentNode
-			$(el).on('webkitTransitionEnd', function() {
-				this.parentNode.removeChild(this)
-				window.pageInit && window.pageInit()
-			})
-			$('#pages').html($('#tmpl').html())
-			$('#tmpl').remove()
-			$(el).addClass('complete')
-		}
-	}
-})
+    resLoader.prototype.loaded = function(){
+        if(isFunc(this.option.onProgress)){
+            this.option.onProgress(++this.currentIndex, this.total);
+        }
+        //加载完毕
+        if(this.currentIndex===this.total){
+            if(isFunc(this.option.onComplete)){
+                this.option.onComplete(this.total);
+            }
+        }
+    }
+
+    //暴露公共方法
+    return resLoader;
+}));

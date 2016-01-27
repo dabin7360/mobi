@@ -1,0 +1,93 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>预加载</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.stroke_wrap{
+			position: relative;
+			width: 85%;
+			height: 15px;
+			margin:10px auto;
+			border:2px solid #64854c;
+			border-radius: 8px;
+			font-size: 12px;
+			overflow: hidden;
+		}
+		.line{
+			width: 0;
+			height: 15px;
+			border-radius: 6px;
+			background: #96b97d;
+		}
+		.percent{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 15px;
+			line-height: 17px;
+			text-align: center;
+			color: #000;
+		}
+		.info{
+			text-align: center;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>预加载</h1>
+	</header>
+	<div class="demo_wrap">
+		<div class="preload">
+			<div class="stroke_wrap">
+				<div class="line"></div>
+				<div class="percent"></div>
+			</div>
+			<div class="info">
+				<span class="current"></span> /
+				<span class="total"></span>
+			</div>
+		</div>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/lib/preload.js"></script>
+	<script>
+		var loader = new resLoader({
+				resources : [
+					'http://p2.qhimg.com/t01ed1438874f940dc0.jpg',
+					'http://p9.qhimg.com/t01b4ff03b72c7dc6c7.jpg',
+					'http://p2.qhimg.com/t01dd90dfbec92074d0.jpg',
+					'http://p7.qhimg.com/t01cfec6d87cde457c5.jpg',
+					'http://p9.qhimg.com/t01943ced462da67833.jpg',
+					'http://p0.qhimg.com/t01943ced462da67833.jpg',
+					'http://p6.qhimg.com/t01aa15a7ba7ccb49a7.jpg',
+					'http://p8.qhimg.com/t010f1e8badf1134376.jpg',
+					'http://p8.qhimg.com/t01cf37ea915533a032.jpg',
+					'http://p3.qhimg.com/t0193d8a3963e1803e9.jpg',
+					'http://p3.qhimg.com/t01cd6a4d4b4bd4457b.jpg'
+				],
+				onStart : function(total){
+					console.log('start:'+total);
+				},
+				onProgress : function(current, total){
+					var percent = current/total*100;
+					$('.line').css('width', percent+'%');
+					$('.percent').text(parseInt(percent)+'%');
+					$('.current').text(current);
+					$('.total').text(total);
+				},
+				onComplete : function(total){
+					console.log('加载完毕:'+total+'个资源');
+				}
+			});
+
+		loader.start();
+
+	</script>
+</body>
+</html>
