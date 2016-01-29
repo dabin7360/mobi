@@ -1,0 +1,64 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+	<title>mustache</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+<body>
+	<header>
+		<h1>mustache</h1>
+	</header>
+	<div class="demo_wrap">
+		<h2>简单的对象绑定展示</h2>
+		<p id="basic"></p>
+
+		<h2>对象数组循环渲染展示</h2>
+		<div id="junior"></div>
+
+		<h2>过滤空数据</h2>
+		<div id="senior"></div>
+
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/lib/mustache.js/mustache.js"></script>
+	<script>
+		var dabinMustache = {
+			basicMu : function(){
+				var user = { name: "Olive", age: 23, sex: "girl" };  
+	            var template = "My name is  {{name}} ,I'm  {{age}} ,Sex is {{sex}}";  
+	            var view = Mustache.render(template, user);  
+	            $("#basic").html(view);
+			},
+			juniorMu :function(){
+				var users = { result: [
+									{ name: "Only", age: 24, sex: "boy" },  
+	                                { name: "for", age: 24, sex: "boy" },  
+	                                { name: "Olive", age: 23, sex: "girl" }  
+                                ]  
+	           				};  
+	            var template = "<ul>{{#result}}<li>{{name}}--{{age}}--{{sex}}</li>{{/result}}</ul>";
+	            var views = Mustache.render(template, users);  
+	            $("#junior").html(views); 
+			},
+			seniorMu:function(){
+				var users = { result: [
+									{ name: "<h2 style='display:inline;'>dabin</h2>", age: 24, sex: "boy" },  
+	                                { name: null, age: 24, sex: "boy" },  
+	                                { name: "Olive", age: 23, sex: "girl" }  
+                                ]  
+	           				};  
+	            var template = "<ul>{{#result}}<li>{{#name}}{{&name}}--{{age}}--{{sex}}{{/name}}</li>{{/result}}</ul>";
+	            var views = Mustache.render(template, users);  
+	            $("#senior").html(views); 
+			}
+
+		}
+		$(function () {  
+            dabinMustache.basicMu();
+            dabinMustache.juniorMu();
+            dabinMustache.seniorMu();
+        })
+	</script>
+</body>
