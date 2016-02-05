@@ -1,6 +1,6 @@
 $(function(){
 	$('header').append('<span class="goback"></span>')
-	.on('tap',function(){
+	.on('click',function(){
 		window.history.back();
 	});
 })
