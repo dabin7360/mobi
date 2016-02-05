@@ -54,3 +54,69 @@ body{
 	} 
 
 }
+
+.jdui_checkbox{
+	position: relative;
+	margin-top: 30px;
+	.jdui_checkbox_wrap{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 25px;
+		height: 25px;
+		border:1px solid gray;
+		background: #FFF;
+	}
+	input[type=checkbox]:checked + .jdui_checkbox_wrap::after{
+		content: '';
+		display: block;
+		width: 20px;
+		height: 8px;
+		margin-top: 3px;
+		border:3px solid teal;
+		border-top: 0;
+		border-right: 0;
+		@include transform(rotate(-45deg));
+	}
+	.jdui_checkbox_txt{
+		position: absolute;
+		left: 30px;
+		top: 0;
+		line-height: 25px;
+	}
+}
+
+.jdui_radio{
+	position: relative;
+	display: inline-block;
+	width: 80px;
+	margin-top: 30px;
+	.jdui_radio_wrap{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 25px;
+		height: 25px;
+		border:1px solid gray;
+		border-radius: 100%;
+		background-color: #FFF;
+		@include transform(translateY(-3px));
+	}
+	input[type=radio]:checked + .jdui_radio_wrap::after{
+		content: '';
+		display: block;
+		width: 19px;
+		height: 19px;
+		margin: 0 auto;
+		background-color: teal;
+		border-radius: 100%;
+		@include transform(translateY(3px));
+	}
+	.jdui_radio_txt{
+		position: absolute;
+		left: 30px;
+		top: 0;
+		line-height: 25px;
+	}
+}
+
