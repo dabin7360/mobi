@@ -10,10 +10,16 @@ ul,li{
 	list-style: none;
 }
 body{
+	padding-top: 40px;
 	background-color: #f6f6f6;
 }
 
 header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	width: 100%;
 	height: 40px;
 	background: #96b97d;
 	border-bottom: 1px solid gray;
