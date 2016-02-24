@@ -52,6 +52,15 @@ var arr=str.match(/[A-Z]/g);
 var arr=str.match(/\b[a-z]\b/gi);
 </pre>
 		</code>
+		<code>
+<pre>function trim(str){
+  return str.replace(/(^\s*)|(\s*$)/g,"");
+}
+function ltrim(str){
+  return str.replace(/(^\s*)/g,"");
+}
+</pre>
+		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>
