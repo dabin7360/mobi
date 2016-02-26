@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>canvas笔记</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		#canvas{display: block; margin: 5px auto; border: 1px solid gray;}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>canvas笔记</h1>
+	</header>
+	<div class="demo_wrap">
+		<canvas id="canvas"></canvas>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script>
+		var myCanvas = document.getElementById('canvas');
+		var myContext = myCanvas.getContext('2d');
+		var myImg = new Image();
+
+		window.onload = function(){
+			myCanvas.width = 370;
+			myCanvas.height = 156;
+
+			myImg.src="../resource/test.png";
+			myImg.onload = function(){
+				//myContext.drawImage(myImg,0,0)
+				//myContext.drawImage(myImg,0,0,370,156)
+				myContext.drawImage(myImg,140,50,380,156,0,0,370,156)
+			}
+
+		}
+	</script>
+</body>
