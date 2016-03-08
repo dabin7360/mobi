@@ -13,17 +13,31 @@
 		<h1>css3笔记</h1>
 	</header>
 	<div class="demo_wrap">
+		<h2>单行溢出省略号</h2>
 		<code>
 <pre>overflow:hidden;
 white-space:nowrap;
 text-overflow:ellipsis;</pre>
 		</code>
+		<h2>多行溢出省略号</h2>
 		<code>
 <pre>overflow:hidden;
 text-overflow:ellipsis;
 display:-webkit-box;
 -webkit-line-clamp:2;
 -webkit-box-orient:vertical;</pre>
+		</code>
+		<h2>设置移动端滚动条</h2>
+		<code>
+<pre>::-webkit-scrollbar{
+  width:8px;
+}
+::-webkit-scrollbar-track{
+  background-color:#FFF;
+}
+::-webkit-scrollbar-thumb{
+  background-color:#b0b0b0
+}</pre>
 		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
