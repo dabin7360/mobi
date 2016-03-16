@@ -19,7 +19,37 @@
 //点击空白等失去焦点时隐藏键盘
 override func touchesEnded(......){
   name.resignFirstResponder()
-}</pre>
+}
+//点击next隐藏键盘
+1.引入UITextFieldDelegate;
+2.func textFieldShouldReturn(.....){
+  textField.resignFirstResponder()
+  return true	
+}
+3.name.delegate = self
+</pre>
+		</code>
+		<h2>获取slider</h2>
+		<code>
+@IBAction func heightChange(sender:AnyObject){<br/>
+  var slider = sender as! UISlider<br/>
+  height.text = "\(Int(slider.value))厘米"<br/>
+}
+		</code>
+		<h2>segmented(radio)</h2>
+		<code>
+			let genderTxt = gender.selectedSegmentIndex == 0 ? "male" : "female"
+		</code>
+		<h2>datepicker</h2>
+		<code>
+let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)<br/>
+let now = NSDate()<br/>
+let components = gregorian?.components(NSCalendarUnit.Year, fromDate: birthday.date, toDate: now, options: NSCalendarOptions())<br/>
+let age = components?.year
+		</code>
+		<h2>开关switch</h2>
+		<code>
+			let hasFangTxt = hasFang.on ? "有房" : "没房"
 		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
