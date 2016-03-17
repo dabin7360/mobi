@@ -51,6 +51,29 @@ let age = components?.year
 		<code>
 			let hasFangTxt = hasFang.on ? "有房" : "没房"
 		</code>
+		<h2>pickerView(select)</h2>
+		<code>
+			let pics = ["性感豹纹服","冷酷到底","帽子很可爱","爱卿平身"]<br/>
+			//新建一个swift文件
+			import UIKit
+			extension ViewController : UIPickerViewDataSource{<br/>
+			    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{<br/>
+			        return 1<br/>
+			    }<br/>
+			    
+			    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{<br/>
+			        return pics.count<br/>
+			    }<br/>
+			}<br/>
+
+			extension ViewController : UIPickerViewDelegate{<br/>
+			    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{<br/>
+			        return pics[row]<br/>
+			    }<br/>
+			}<br/>
+			picpicker.dataSource = self
+        	picpicker.delegate = self
+		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>
