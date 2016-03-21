@@ -71,8 +71,11 @@ let age = components?.year
 			        return pics[row]<br/>
 			    }<br/>
 			}<br/>
-			picpicker.dataSource = self
-        	picpicker.delegate = self
+			picpicker.dataSource = self<br/>
+        	picpicker.delegate = self<br/>
+        	//获取选中项的index<br/>
+        	picpicker.selectedRowInComponent(0)<br/>
+        	
 		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>

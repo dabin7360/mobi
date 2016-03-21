@@ -15,7 +15,24 @@
 	<div class="demo_wrap">
 		<h2>新建viewController,建立链接</h2>
 		<code>
-			segue => modal
+			segue => modal<br/>
+			//为segue 添加identifier<br/>
+			//建立链接的函数<br/>
+			override func prepareForSegue(segue:.......){<br/>
+				if(segue.identifier == "toPicSegue"){<br/>
+					let vc = segue.destinationViewController as! picViewController<br/>
+					vc.picName = imageName<br/>
+					//新建的viewController内的picName就会被赋值<br/>
+				}<br/>
+			}<br/>
+			picImage.image = UIImage(named:picName)<br/>
+		</code>
+		<h2>返回(btn指向exit)</h2>
+		<code>
+			@IBAction func close(segue:UIStoryboardSegue){
+				let mc = segue.sourceViewController as! picViewController
+				openLog.text = mc.logName
+			}
 		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
