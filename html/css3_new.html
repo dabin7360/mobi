@@ -55,6 +55,15 @@ display:-webkit-box;
 		<code>
 <pre>-webkit-transform:translate3d(0,0,0)</pre>
 		</code>
+		<h2>字体大小自适应</h2>
+		<code>
+			<pre>font-size:3vw; //3% of viewport width
+window.onresize = function(){
+  //重绘
+  textDom.style['z-index'] = 1;
+}
+</pre>
+		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>
