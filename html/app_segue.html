@@ -32,6 +32,7 @@
 			@IBAction func close(segue:UIStoryboardSegue){
 				let mc = segue.sourceViewController as! picViewController
 				openLog.text = mc.logName
+				todotable.reloadData()
 			}
 		</code>
 	</div>

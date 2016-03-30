@@ -47,6 +47,14 @@ let now = NSDate()<br/>
 let components = gregorian?.components(NSCalendarUnit.Year, fromDate: birthday.date, toDate: now, options: NSCalendarOptions())<br/>
 let age = components?.year
 		</code>
+		<code>
+			func dateFromString(dateStr : String) -> NSDate?{<br/>
+				let dateformatter = NSDateFormatter()<br/>
+				dateformatter.dateFormat = "yyyy-MM-dd"<br/>
+				let date = dateformatter.dateFromString(dateStr)<br/>
+				return date<br/>
+			}
+		</code>
 		<h2>开关switch</h2>
 		<code>
 			let hasFangTxt = hasFang.on ? "有房" : "没房"
@@ -75,7 +83,7 @@ let age = components?.year
         	picpicker.delegate = self<br/>
         	//获取选中项的index<br/>
         	picpicker.selectedRowInComponent(0)<br/>
-        	
+
 		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>

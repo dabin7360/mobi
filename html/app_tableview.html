@@ -1,0 +1,83 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>app_tableView controller</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<header>
+		<h1>app_tableView</h1>
+	</header>
+	<div class="demo_wrap">
+		<h2>创建tableView</h2>
+		<code>
+			1.拖进tableview控件,增加prototype Cells<br/>
+			2.将tableview拖动到viewcontroller,viewcontroller继承UITableViewDataSource<br/>
+		</code>
+		<code>
+			//重写UITableViewDataSource.必要方法<br/>
+			func tableView(tableView:UITableView,numberOfRowsInSection section:Int)->Int{<br/>
+				return 20<br/>
+			}<br/>
+			func tableView(tableView:UITableView:UITableView,cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell{<br/>
+				let cell = tableView.dequeueReusableCellWithIdentifier("todocell")<br/>
+				let todo = todos[indexPath.row] as TodoModel<br/>
+				cell?.textLable?.text = todo.name<br/>
+				return cell<br/>
+			}
+		</code>
+		<h2>创建model,定义数据格式</h2>
+		<code>
+			class TodoModel : NSObject{<br/>
+				var id : String<br/>
+				var name : String<br/>
+				var gender : String<br/>
+				var age : String<br/>
+				init(id:String,name:String,gender:String,age:String){<br/>
+					this.id = id<br/>
+					this.name = name<br/>
+					this.gender = gender<br/>
+					this age = age<br/>
+				}<br/>
+			}
+		</code>
+		<code>
+			var Todo : [TodoModel] = []<br/>
+			Todo = [TodoModel(id:"1",name:"姓名",gender:"男",age:"30"),...]
+		</code>
+		<h2>删除行</h2>
+		<code>
+			func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){<br/>
+		        if editingStyle == UITableViewCellEditingStyle.Delete{<br/>
+		            todos.removeAtIndex(indexPath.row)<br/>
+		            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)<br/>
+		        }<br/>
+		    }
+		</code>
+		<h2>bar 左上角添加edit按钮</h2>
+		<code>
+			navigationItem.leftBarButtonItem = editButtonItem()<br/>
+			override func setEditing(editing:Bool,animated:Bool){<br/>
+				super.setEditing(editing,animated:animated)<br/>
+				todoTable.setEditing(editing,animated:animated)<br/>
+			}
+		</code>
+		<h2>移动cell</h2>
+		<code>
+			func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {<br/>
+		        return editing<br/>
+		    }<br/>
+		    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {<br/>
+		        let todo = todos.removeAtIndex(sourceIndexPath.row)<br/>
+		        todos.insert(todo, atIndex: destinationIndexPath.row)<br/>
+		    }
+		</code>
+
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>
