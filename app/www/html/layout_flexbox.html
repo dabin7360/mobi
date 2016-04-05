@@ -1,0 +1,177 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>flexbox布局</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.bg_red{background:red;}
+		.nav{display:flex;}
+		.tin{
+			flex:1;
+			background: teal;
+			color: #FFF;
+			text-align: center;
+		}
+		.f2{flex:2;/**order:-1;**/}
+		.nav2{
+			display:flex;
+			flex-direction:row-reverse;
+		}
+		.nav3{
+			display: flex;
+			height: 100px;
+			flex-direction:column;
+		}
+
+
+		.block{
+			display: flex;
+			flex-wrap:nowrap;
+		}
+		.left{
+			width: 100px;
+			height: 30px;
+			background: pink;
+		}
+		.right{
+			height: 30px;
+			background: green;
+			flex:1;
+		}
+
+		.w200{width: 200px;}
+		.w300{width: 300px;}
+
+
+		.flex_pop_wrap{
+			display: flex;
+			height: 80px;
+			border: 8px solid blue;
+			justify-content:center;
+			align-items:center;
+			/**
+			align-items:flex-start;
+			align-items:flex-end;
+			align-items:stretch;
+			**/
+		}
+		.flex_pop{
+			width: 200px;
+			height: 50px;
+			background: gray;
+		}
+
+		.old_flex_pop_wrap{
+			display: -webkit-flex-box;
+			height: 100px;
+			border: 3px solid blue;
+			box-pack:center;
+			box-align:center;
+		}
+		.old_flex_pop{
+			width: 200px;
+			height: 90px;
+			/**-webkit-flex-box:1;**/
+			background: gray;
+		}
+
+		.flex_sky{
+			display: flex;
+			justify-content:space-around;
+			/**justify-content:flex-start;**/
+			/**justify-content:flex-end;**/
+			/**justify-content:space-between;**/
+		}
+		.flex_cloud{
+			width: 60px;
+			height: 30px;
+			background: yellow;
+		}
+
+		.flex_building{
+			display: flex;
+			height: 120px;
+			border: 5px solid navy;
+		}
+		.flex_floor{
+			width: 60px;
+			background: orange;
+			align-self:flex-start;
+		}
+		.flex_floor:nth-child(2){
+			align-self:center;
+		}
+		.flex_floor:nth-child(3){
+			align-self:flex-end;
+		}
+		.flex_floor:nth-child(4){
+			align-self:baseline;
+		}
+		.flex_floor:nth-child(5){
+			background: #000;
+			color:#FFF;
+			align-self:stretch;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>flexbox布局</h1>
+	</header>
+	<div class="demo_wrap">
+		<ul class="nav">
+			<li class="tin">项目一</li>
+			<li class="tin">项目二</li>
+			<li class="tin f2">项目三</li>
+		</ul>
+		<ul class="nav2">
+			<li class="tin">项目一</li>
+			<li class="tin">项目二</li>
+			<li class="tin f2">项目三</li>
+		</ul>
+		<ul class="nav3">
+			<li class="tin">项目一</li>
+			<li class="tin">项目二</li>
+			<li class="tin f2">项目三</li>
+		</ul>
+		<div class="block">
+			<div class="left">width=100px</div>
+			<div class="right">剩下的铺满</div>
+			<div class="right">剩下的铺满</div>
+		</div>
+		<div class="block">
+			<div class="left">w100</div>
+			<div class="w200 bg_red">w200</div>
+			<div class="w300 bg_red">w300</div>
+		</div>
+		<div class="flex_pop_wrap">
+			<div class="flex_pop">
+				justify-content:center;<br/>
+				align-items:center;
+			</div>
+		</div>
+		<div class="old_flex_pop_wrap">
+			<div class="old_flex_pop">
+				安卓4.4以下：<br/>
+				display:-webkit-flex-box;<br/>
+				flex-box:-1;<br/>
+				box-pack:center;<br/>
+				box-align:center;
+			</div>
+		</div>
+		<div class="flex_sky">
+			<div class="flex_cloud">w80</div>
+			<div class="flex_cloud">w80</div>
+		</div>
+		<div class="flex_building">
+			<div class="flex_floor">top</div>
+			<div class="flex_floor">center</div>
+			<div class="flex_floor">bottom</div>
+			<div class="flex_floor">baseline</div>
+			<div class="flex_floor">stretch</div>
+		</div>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>

@@ -4,16 +4,81 @@
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
 	<title>日历</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/m_calender.css">
+	<style>
+  .test_calendar{font-size: 16px; margin: 20px;}
+  .test_calendar .title{font-weight: bold;}
+  .test_calendar .date{border: 1px solid #ccc; display: inline-block; padding: 5px; width: 60%; text-indent: 5px;}
+  </style>
+
 </head>
 <body>
 	<header>
 		<h1>日历</h1>
 	</header>
 	<div class="demo_wrap">
-		<input type="time" width="200px"/>
-		<input id="myc" onclick="laydate()" />
+		原生日历：<input type="time" width="200px"/><br/>
+		pc端日历<input id="myc" onclick="laydate()" /><br/>
+		m端日历:
+		<div class="test_calendar">
+          <span class="title">选择日期：</span>
+          <span id="J_dateStartPicker" class="date">2015-6-20</span>
+        </div>
+        <div class="test_calendar">
+          <span class="title">结束日期：</span>
+          <span id="J_dateEndPicker" class="date">2015-6-25</span>
+        </div>
+
+
+
+
 	</div>
     <script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>
 	<script src="../js/lib/laydate-v1.1/laydate/laydate.js"></script>
+	<script src="../js/lib/require.js"></script>
+	<script src="../js/lib/m_calender.js"></script>
+	<script>
+		require.config({
+	        paths: {
+	            zepto: '../js/lib/zepto'
+	        },
+	        shim: {
+	            'zepto': {
+	                exports: '$'
+	            }
+	        }
+	    });
+	    require(['zepto', 'calendar'], function ($, calendar) {
+	        var demo = {
+	            init: function () {
+	                var me = this;
+	                //config
+	                $('#J_dateStartPicker').calendar({
+	                  selectDate: $('#J_dateStartPicker').text(),
+	                  // startDate: new Date(2015,3)
+	                  selecteCallback: function(str){
+	                    console.log(str);
+	                  }
+	                });
+	                $('#J_dateEndPicker').calendar({
+	                  selectDate: $('#J_dateEndPicker').text(),
+	                  title: '结束日期'
+	                  // startDate: new Date(2015,3)
+	                });
+	                //event
+	                me.bindHandler();
+	            },
+	            bindHandler: function () {
+	                var me = this;
+	                $('#J_dateStartPicker').on('selectedDate', function(e, str){
+	                  console.log('event',str);
+	                });
+	            }
+	        }
+	        //init
+	        demo.init();
+	    });
+
+	</script>
 </body>

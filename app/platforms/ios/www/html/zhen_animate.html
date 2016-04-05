@@ -1,0 +1,30 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>css3帧动画</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		@-webkit-keyframes zhen{
+			0%{background-position: 0 0;}
+			100%{background-position: -1260px 0;}
+		}
+		.zhen_animate{
+			width: 180px;
+			height: 300px;
+			margin: 0 auto;
+			background:url(../resource/15.png) 0 0 no-repeat;
+			animation: zhen 1s steps(7) infinite;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>css3帧动画</h1>
+	</header>
+	<div class="demo_wrap">
+		<div class="zhen_animate"></div>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>

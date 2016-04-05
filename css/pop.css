@@ -1,21 +1,18 @@
 .db-pop {
-  opacity: 0;
-  transition: opacity 1s;
   position: absolute;
   left: 50%;
-  top: -webkit-calc(50% - 50px);
-  top: calc(50% - 50px);
+  top:50%;
   width: 95%;
-  padding-bottom: 15px;
   text-align: center;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  transform: translate3d(-50%, -1000px, 0);
+  transition:transform .5s;
   background-color: #96b97d;
   box-shadow: 0 0 1px #FFF;
-  z-index: 1; }
+  z-index: 1; 
+}
+.db-pop.up-shw{
+  transform: translate3d(-50%, -50%, 0);
+}
   .db-pop .pop-con {
     padding: 10px 0 15px 0;
     text-align: center;

@@ -8,46 +8,35 @@ function Pop(){
 	})()
 	this.toast = function(msg,sec){
 		var popDom = $(".pop"+l);
-        if($('.db-pop').find('.pop-con').length && $('.db-pop').is(':visible')){
+		if($('.db-pop').hasClass('up-shw')){
             return;
         }
     	function hid(){
-    		popDom.css("opacity",0);
-    		setTimeout(function(){popDom.hide()},500);
+    		popDom.removeClass('up-shw');
     	}
 		popDom.html('<div class="pop-con">'+msg+'</div>');
-		popDom.show().css({
-			"padding-bottom":"0",
-			"transform":"translate(-50%,-50%)"
-		});
+        popDom.addClass('up-shw');
 		setTimeout(hid,sec);
 	}
 
 	this.alert = function(msg,fn){
 		var popDom = $(".pop"+l);
 		popDom.html('<div class="pop-con">'+msg+'</div><span class="confirm">确定</span>');
-		popDom.css({
-			"display":"block",
-			"padding-bottom":"15px",
-			"opacity":"1"
-		});
+		popDom.addClass('up-shw');
 		$(".overlay").show();
 		popDom.find(".confirm").on("tap",function(){
 			if(fn){
 				fn();
 			}
-			popDom.hide();
-			$(".overlay").hide();
+			popDom.removeClass('up-shw');
+			$(".overlay").fadeOut(700);
 		})
 	}
     //点击确定执行fn，点击取消执行fn2
 	this.confirm = function(msg,fn,fn2){
 		var popDom = $(".pop"+l);
 		popDom.html('<div class="pop-con">'+msg+'</div><div class="pop_btn"><span class="cancel">取消</span><span class="confirm">确定</span></div>');
-		popDom.css({
-            "display":"block",
-			"opacity":"1"
-		});
+		popDom.addClass('up-shw');
         $(".overlay").show();
 		popDom.find(".cancel").on("tap",function(){
             if(fn2){
@@ -55,8 +44,8 @@ function Pop(){
                     return;
                 }
             }
-			popDom.hide();
-			$(".overlay").hide();
+			popDom.removeClass('up-shw');
+			$(".overlay").fadeOut(700);
 		})
 		popDom.find(".confirm").on("tap",function(){
 			if(fn){
@@ -64,8 +53,8 @@ function Pop(){
                     return;
                 }
 			}
-			popDom.hide();
-			$(".overlay").hide();
+			popDom.removeClass('up-shw');
+			$(".overlay").fadeOut(700);
 		})
 		}
 

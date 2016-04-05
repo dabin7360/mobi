@@ -1,0 +1,48 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+	<title>git</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+<body>
+	<header>
+		<h1>git</h1>
+	</header>
+	<div class="demo_wrap">
+		<code>
+			<p>git config --global user.name "dabin"</p>
+			<p>git config --global user.email lwb@jd.com</p>
+			<p>git config --list</p>
+			<p>git init</p>
+			<p>git clone</p>
+			<p>git add *.html //存储到暂存区</p>
+			<p>git commit -m 'submit' //提交到分支</p>
+			<p>git status</p>
+			<p>git clone [url]</p>
+			<p>git reset HEAD //暂存区被master取代</p>
+			<p>git rm --cached x.html //从暂存区删除此文件</p>
+			<p>git checkout [x.html] //用暂存区的文件替换工作区文件！</p>
+			<p>git checkout HEAD [X.html] //用master取代暂存区和工作区的文件！</p>
+			<p>git branch //查看分支</p>
+			<p>git branch branchname //创建分支</p>
+			<p>git checkout branchname //切换分支</p>
+			<p>git branch -d branchname //删除分支</p>
+			<p>git merge branchname //将此分支合并到主分支</p>
+			<p>git diff //查看冲突</p>
+			<p>git log [--oneline,--reverse,--author] //查看提交历史</p>
+			<p>ssh-keygen -t rsa -C "524390074@qq.com"  //生产key文件（.ssh/id_rsa.pub）,去网站上创建key</p>
+			<p>ssh -T git@github.com  //测试是否连接成功</p>
+			<p>git remote add origin git@github.com:dabin7360/mobi.git  //设置远程仓库地址</p>
+			<p>git remote set-url origin git@github.com:dabin7360/mobi.git  //修改仓库地址</p>
+			<p>git push -u origin master //上传到仓库</p>
+			<p>git remote //查看有哪些仓库</p>
+			<p>(git fetch , git merge) = git pull //从仓库获取新数据并合并到自己的分支</p>
+			<p>git push -f,git pull,git push --force origin master //修复错误</p>
+
+
+		</code>
+	</div>
+    <script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>

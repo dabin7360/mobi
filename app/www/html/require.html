@@ -1,0 +1,46 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+	<title>requirejs</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		ol{margin:10px; padding:10px; line-height: 23px;}
+		li{text-indent: 20px; margin-bottom: 10px;}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>requirejs</h1>
+	</header>
+	<div class="demo_wrap">
+		<h2>模块化编程</h2>
+		<ol>
+			<li>1.写很多方法,但众多的方法名污染了全局环境。</li>
+			<li>2.把众多方法写到对象里面，但暴露了对象内的所有成员，且可以直接对对象内的成员进行修改。</li>
+			<li>3.立即执行函数的方法，在方法内返回所要公开的方法，这种方法就是模块化编程的基础。</li>
+			<li>4.require([module], callback);</li>
+			<li>5.&lt;script src="js/require.js" defer async="true" &gt;&lt;/script&gt;  //异步加载js</li>
+			<li>6.define(['module'],function(){....;return {};})</li>
+			<li>7.require.config({baseUrl,paths,shim})</li>
+		</ol>
+		<code>
+			require.config({<br/>
+				paths:{<br/>
+					zepto:'lib/zepto',<br/>
+					pubjs:'public'<br/>
+				},<br/>
+				shim:{<br/>
+					'zepto':{<br/>
+						exports:'$'<br/>
+					}<br/>
+				}<br/>
+			})<br/>
+
+			require(['zepto','pubjs'],<br/>function($,init){<br/>
+				init();<br/>
+			})<br/>
+		</code>
+	</div>
+	<script data-main="../js/dabin-require.js" src="../js/lib/require.js"></script>
+</body>

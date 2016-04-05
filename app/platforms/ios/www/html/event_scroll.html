@@ -1,0 +1,121 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>操作滚动条</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.banner{
+			height: 160px;
+			background: teal;
+			margin-bottom: 32px;
+		}
+		.nav_wrap{
+			position: absolute;
+			height: 32px;
+			width: 100%;
+			margin-top: -32px;
+			overflow: hidden;
+		}
+		.nav_wrap.fixed{
+			position: fixed;
+			top: 40px;
+			left: 0;
+			margin-top: 0;
+		}
+		.nav{height:40px;overflow-x: scroll; white-space: nowrap;background: #dedede;}
+		.nav li{
+			display: inline-block;
+			height: 30px;
+			width: 80px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.nav li.cur{border-bottom: 1px solid teal;}
+		.con_wrap h2{height: 30px; line-height: 30px;}
+		.con_wrap p{height: 20px; line-height: 20px;}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>操作滚动条</h1>
+	</header>
+	<div class="demo_wrap">
+		<div class="banner"></div>
+		<div class="nav_wrap">
+			<ul class="nav">
+				<li class="cur">tab1</li>
+				<li>tab2</li>
+				<li>tab3</li>
+				<li>tab4</li>
+				<li>tab5</li>
+			</ul>
+		</div>
+		<div class="con_wrap">
+			<h2>tab1</h2>
+			<p>111111111111</p><p>111111111111</p><p>111111111111</p>
+			<p>111111111111</p><p>111111111111</p><p>111111111111</p>
+			<h2>tab2</h2>
+			<p>222222222222</p><p>222222222222</p><p>222222222222</p>
+			<p>222222222222</p><p>222222222222</p><p>222222222222</p>
+			<h2>tab3</h2>
+			<p>333333333333</p><p>333333333333</p><p>333333333333</p>
+			<p>333333333333</p><p>333333333333</p><p>333333333333</p>
+			<h2>tab4</h2>
+			<p>444444444444</p><p>444444444444</p><p>444444444444</p>
+			<p>444444444444</p><p>444444444444</p><p>444444444444</p>
+			<p>444444444444</p><p>444444444444</p><p>444444444444</p>
+			<p>444444444444</p><p>444444444444</p><p>444444444444</p>
+			<h2>tab5</h2>
+			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
+			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
+			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
+			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
+			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
+			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
+			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
+		</div>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script>
+		/**
+			header:40px;
+			nav:32px;
+		**/
+		var myScroll = {
+			changeTab : function(){
+				$('.nav li').on('click',function(){
+					$('body').scrollTop($('h2').eq($(this).index()).offset().top-72);
+				})
+			},
+			listenScroll : function(){
+				var $navWrap = $('.nav_wrap');
+				var navWrapTop = $navWrap.offset().top-40;
+				var $body = $('body');
+				var $h2 = $('h2');
+				var $tabTin = $('.nav li');
+				var nowS;
+				$(document).on('scroll',function(){
+					nowS = $body.scrollTop();
+					if(nowS >= navWrapTop){
+						$navWrap.addClass('fixed');
+					}else{
+						$navWrap.removeClass('fixed');
+					}
+					for(var i=0; i<$h2.length; i++){
+						if(nowS >= $h2.eq(i).offset().top-72){
+							$tabTin.removeClass('cur');
+							$tabTin.eq(i).addClass('cur');
+						}
+					}
+				})
+			},
+			init : function(){
+				this.changeTab();
+				this.listenScroll();
+			}
+		}
+		myScroll.init();
+	</script>
+</body>

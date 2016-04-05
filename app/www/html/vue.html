@@ -1,0 +1,142 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>vue</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.box{width: 100px; height: 100px; border: 2px solid teal;}
+		.w300{width:300px;}
+		.cred{background-color: red;}
+		.transition{height: 20px; background-color: #FFF;transition:all 1s ease;}
+		.expand{
+			height: 50px;
+			background-color: teal;	
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>vue.js</h1>
+	</header>
+	<div class="demo_wrap">
+		<h2>basic</h2>
+		<div id="myfirst">
+			<p>{{{myhtml}}}</p>
+			<p>{{message}}</p>
+			<input v-model="message" debounce="500"/>
+			<button v-on:click="reversMsg">反转文字</button>
+			<p>a = {{a}}, b = {{b}}</p>
+
+		</div>
+		<h2>list&event</h2>
+		<div id="mysecond">
+			<input v-model="addTxt"/><button @click="addItem">add</button>
+			<ul>
+				<li v-for="tin in list | orderBy 'id'">{{startTxt}}-{{$index}}-{{tin.txt}}<button v-on:click="delItem($index)">X</button></li>
+			</ul>
+		</div>
+		<h2>class&style&if</h2>
+		<div id="mythird">
+			<div class="box" v-bind:class="classObject" v-bind:style="styleObject">
+				<p class="transition" v-bind:class="showTxt ? 'expand' : ''">hello china</p>
+				<p v-if="showTxt">hello world</p>
+				<p v-else>no hello</p>
+			</div>
+		</div>
+		<h3>form</h3>
+		<div id="myforth">
+			<input type="checkbox" value="first" v-model="checkbox"/> first
+			<input type="checkbox" value="second" v-model="checkbox"/> second ------ {{checkbox}}
+			<br/>
+			<input type="radio" value="one" v-model="picked" />one
+			<input type="radio" value="two" v-model="picked" />two
+			<br/>
+			{{selected}}
+			<select v-model="selected">
+				<option v-for="i in arr" v-bind:value="i">{{i}}</option>
+			</select>
+		</div>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/lib/vue.js"></script>
+	<script>
+		var demo1 = new Vue({
+			el : '#myfirst',
+			data : {
+				a : 1,
+				message : 'hello world!',
+				myhtml : '<a href="/" target="_blank">打开首页</a>'
+			},
+			methods : {
+				reversMsg : function(){
+					this.message = this.message.split(" ").reverse().join(" ");
+				}
+			},
+			//demo1.$data === demo1.message
+			created : function(){
+				console.log(this.message);
+			},
+			computed : {
+				b : function(){
+					return this.a + this.c;
+				},
+				c : {
+					get : function(){
+						return this.a + 2;
+					},
+					set : function(newVal){
+						this.a = newVal;
+					}
+				}
+			}
+		})
+		var demo2 = new Vue({
+			el : '#mysecond',
+			data : {
+				addTxt : '',
+				startTxt : 'fd',
+				list : [
+					{id : '1', txt : 'html'},
+					{id : '3', txt : 'css'},
+					{id : '2', txt : 'javascript'}
+				]
+			},
+			methods : {
+				addItem :function(){
+					var text = this.addTxt.trim();
+					if(this.addTxt){
+						this.list.push({txt:this.addTxt});
+					}
+				},
+				delItem : function(index){
+					console.log(index)
+					this.list.splice(index,1);
+				}
+			}
+		})
+		var demo3 = new Vue({
+			el : '#mythird',
+			data : {
+				classObject : {
+					'w300' : true,
+					'cred' : true
+				},
+				styleObject : {
+					borderRadius : '10px'
+				},
+				showTxt : true
+			}
+		})
+		var demo4 = new Vue({
+			el : '#myforth',
+			data : {
+				checkbox : [],
+				picked : 'two',
+				arr : ['a','b','c','d','e'],
+				selected : 'b' 
+			}
+		})
+	</script>
+</body>

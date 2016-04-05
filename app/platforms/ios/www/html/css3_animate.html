@@ -1,0 +1,162 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>css3动画库</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/lib/animate.min.css">
+	<style>
+		*{padding:0; margin:0;}
+		html,body{width:100%;height: 100%;}
+		.animation-list{width:90%; height: 70%; padding:0 5%; overflow: scroll; border-bottom: 1px solid #96b97d;}
+		dl{padding:10px 0;}
+		dt{padding:10px 0; font-weight:bold;}
+		dd{padding:0 10px;}
+		code{cursor:pointer;}
+		.fixed-block{width:90%; height:20%; margin: 0 auto; margin-top: 5%;}
+		#demo{height:35px; line-height:35px; background:rgb(0,128,128); text-align:center; color:chartreuse;}
+		.code-info{height:50px; line-height:50px;}
+		.code-info span{color:red; font-weight:bold; padding-left:10px;}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>css3动画库</h1>
+	</header>
+	<div class="demo_wrap">
+		<aside class="animation-list">		
+			<dl>
+				<dt>引人注目的</dt>
+				<dd>反弹:<code>bounce</code></dd>
+				<dd>闪烁:<code>flash</code></dd>
+				<dd>脉冲:<code>pulse</code></dd>
+				<dd>橡皮筋:<code>rubberBand</code></dd>
+				<dd>抖动:<code>shake</code></dd>
+				<dd>挂件摆动:<code>swing</code></dd>
+				<dd><code>tada</code></dd>
+				<dd>左右摇晃:<code>wobble</code></dd>
+			</dl>
+
+			<dl>
+				<dt>夸张的进入页面和退出页面</dt>
+				<dd><code>bounce</code></dd>
+				<dd><code>bounceIn</code></dd>
+				<dd><code>bounceInDown</code></dd>
+				<dd><code>bounceInLeft</code></dd>
+				<dd><code>bounceInRight</code></dd>
+				<dd><code>bounceInUp</code></dd>
+				<dd><code>bounceOut</code></dd>
+				<dd><code>bounceOutDown</code></dd>
+				<dd><code>bounceOutLeft</code></dd>
+				<dd><code>bounceOutRight</code></dd>
+				<dd><code>bounceOutUp</code></dd>
+			</dl>
+
+			<dl>
+				<dt>渐显式进入,渐隐式退出</dt>
+				<dd><code>fadeIn</code></dd>
+				<dd><code>fadeInDown</code></dd>
+				<dd><code>fadeInDownBig</code></dd>
+				<dd><code>fadeInLeft</code></dd>
+				<dd><code>fadeInLeftBig</code></dd>
+				<dd><code>fadeInRight</code></dd>
+				<dd><code>fadeInRightBig</code></dd>
+				<dd><code>fadeInUp</code></dd>
+				<dd><code>fadeInUpBig</code></dd>
+				<dd><code>fadeOut</code></dd>
+				<dd><code>fadeOutDown</code></dd>
+				<dd><code>fadeOutDownBig</code></dd>
+				<dd><code>fadeOutLeft</code></dd>
+				<dd><code>fadeOutLeftBig</code></dd>
+				<dd><code>fadeOutRight</code></dd>
+				<dd><code>fadeOutRightBig</code></dd>
+				<dd><code>fadeOutUp</code></dd>
+				<dd><code>fadeOutUpBig</code></dd>
+			</dl>
+
+			<dl>
+				<dt>3D翻转特效</dt>
+				<dd><code>flip</code></dd>
+				<dd><code>flipInX</code></dd>
+				<dd><code>flipInY</code></dd>
+				<dd><code>flipOutX</code></dd>
+				<dd><code>flipOutY</code></dd>
+			</dl>
+
+			<dl>
+				<dt>速度感</dt>
+				<dd><code>lightSpeedIn</code></dd>
+				<dd><code>lightSpeedOut</code></dd>
+			</dl>
+
+			<dl>
+				<dt>2d翻转</dt>
+				<dd><code>rotateIn</code></dd>
+				<dd><code>rotateInDownLeft</code></dd>
+				<dd><code>rotateInDownRight</code></dd>
+				<dd><code>rotateInUpLeft</code></dd>
+				<dd><code>rotateInUpRight</code></dd>
+				<dd><code>rotateOut</code></dd>
+				<dd><code>rotateOutDownLeft</code></dd>
+				<dd><code>rotateOutDownRight</code></dd>
+				<dd><code>rotateOutUpLeft</code></dd>
+				<dd><code>rotateOutUpRight</code></dd>
+			</dl>
+
+			<dl>
+				<dt>翻滚进入</dt>
+				<dd><code>hinge</code></dd>
+				<dd><code>rollIn</code></dd>
+				<dd><code>rollOut</code></dd>
+			</dl>
+
+			<dl>
+				<dt>放大缩小</dt>
+				<dd><code>zoomIn</code></dd>
+				<dd><code>zoomInDown</code></dd>
+				<dd><code>zoomInLeft</code></dd>
+				<dd><code>zoomInRight</code></dd>
+				<dd><code>zoomInUp</code></dd>
+				<dd><code>zoomOut</code></dd>
+				<dd><code>zoomOutDown</code></dd>
+				<dd><code>zoomOutLeft</code></dd>
+				<dd><code>zoomOutRight</code></dd>
+				<dd><code>zoomOutUp</code></dd>
+			</dl>
+
+			<dl>
+				<dt>滑动进出</dt>
+				<dd><code>slideInDown</code></dd>
+				<dd><code>slideInLeft</code></dd>
+				<dd><code>slideInRight</code></dd>
+				<dd><code>slideInUp</code></dd>
+				<dd><code>slideOutDown</code></dd>
+				<dd><code>slideOutLeft</code></dd>
+				<dd><code>slideOutRight</code></dd>
+				<dd><code>slideOutUp</code></dd>
+			</dl>
+		</aside>
+		<div class="fixed-block">
+			<p id="demo">用户体验设计部上海设计中心</p>
+			<p class="code-info">className:<span id="classInfo"></span></p>
+			<label>反复执行：<input type="checkbox" id="repeat"></label>
+		</div>
+	
+	</div>
+    <script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script>
+		$("code").on("click",function(){
+			var curAnimateName = $(this).text();
+			$("#demo").attr("class","");
+			setTimeout(function(){
+				$("#demo").addClass("animated "+curAnimateName)
+				if($("#repeat").get(0).checked){
+					$("#demo").addClass("infinite")
+				}
+				$("#classInfo").text($("#demo").attr("class"));
+			},100);
+
+		})
+	</script>
+</body>

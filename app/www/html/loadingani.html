@@ -1,0 +1,72 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+	<title>loadingani</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.loading-pop { width: 50%; height: 80px; background: #343b4a; position: absolute; text-align: center; padding: 50px 0 40px 0; z-index: 1; }
+
+		.loading-pop .spinner { width: 70px; height: 70px; display: inline-block; position: relative; text-align: center; }
+
+		.loading-pop .dot1, .loading-pop .dot2 { width: 30%; height: 30%; position: relative; display: inline-block; background-color: #3262d4; border-radius: 100%; }
+
+		.loading-pop .dot1 { transform: translateX(-90%); animation: d1 2s infinite linear both; -webkit-animation: d1 2s infinite linear both; -moz-animation: d1 2s infinite linear both; animation: d1 2s infinite linear both; }
+
+		.loading-pop .dot2 { transform: translateX(110%); margin-left: -50%; background-color: #f3465a; animation: d2 2s infinite linear both; -webkit-animation: d2 2s infinite linear both; -moz-animation: d2 2s infinite linear both; animation: d2 2s infinite linear both; }
+
+		.loading-pop .txt { margin-top: -30px; color: #FFF; }
+
+		@-webkit-keyframes d1 { 
+			0% { 
+				z-index: 1;
+		    	-webkit-transform: translateX(-90%);
+		    }
+		  	49% { z-index: 1; }
+		  	50% { 
+		  		z-index: 2;
+		    	-webkit-transform: translateX(50%); 
+		    }
+		  	99% { z-index: 2; }
+		  	100% { 
+		  		z-index: 1;
+		    	-webkit-transform: translateX(-90%); 
+			} 
+		}
+
+		@-webkit-keyframes d2 { 
+			0% { 
+				z-index: 2;
+    			-webkit-transform: translateX(110%); 
+    		}
+  			49% { z-index: 2; }
+  			50% { 
+  				z-index: 1;
+    			-webkit-transform: translateX(-50%); 
+    		}
+  			99% { z-index: 1; }
+  			100% { 
+  				z-index: 2;
+    			-webkit-transform: translateX(110%); 
+    		} 
+    	}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>form_selector</h1>
+	</header>
+	<div class="demo_wrap">
+
+		<div class="loading-pop chart-pop">
+		    <div class="spinner">
+			    <div class="dot1"></div>
+			    <div class="dot2"></div>
+		    </div>
+		    <div class="txt">数据加载中</div>	
+	 	</div>
+
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>

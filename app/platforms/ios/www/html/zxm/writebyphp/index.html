@@ -1,0 +1,41 @@
+<!Doctype html>
+<title>年会取号</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+<link rel="stylesheet" type="text/css" href="index.css">
+<style>
+	*{font-size:100%;}
+</style>
+<body>
+<form id="form">
+    <input type="text" id="name" name="name" placeholder="请输入您的姓名" />
+    <input type="button" id="getNo" value="取号"/>
+</form>
+
+<div id="result"></div>
+
+<div class="test">
+	<h1>RDM</h1>
+	<p>京东无线应用<br/>抢鲜体验</P>
+</div>
+
+<script src="zepto.min.js"></script>
+<script>
+	if(localStorage.length){
+		$("#form").remove();
+		var hasName = localStorage.key(0);
+		var hasNo = localStorage.getItem(hasName);
+		$("#result").html(hasName+"您好,你的号码为："+hasNo);
+	}
+
+
+	$('#getNo').tap(function(){
+		var yourName = $("#name").val();
+		$("#form").animate({"height":0,"overflow":"hidden"},500,"ease-out")
+		$.post('c.php', {name: yourName}, function(r){
+		  $("#result").html(yourName+"您好,你的号码为："+r);
+		  localStorage.setItem(yourName,r);
+		})
+	})
+</script>
+</body>

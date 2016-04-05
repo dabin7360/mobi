@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "701E7B02E9702528C1C02EDF5AB65C346F7FE7E4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "701E7B02E9702528C1C02EDF5AB65C346F7FE7E4" : 0,
+    "8AC79CBDC8A36C3741BAC6C0A4B70CCA68D62318" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F45AD83D-1C75-429F-880C-77A9F0B88737",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "701E7B02E9702528C1C02EDF5AB65C346F7FE7E4" : "mobi\/",
+    "8AC79CBDC8A36C3741BAC6C0A4B70CCA68D62318" : "mobi\/app\/platforms\/ios\/www\/js\/lib\/mustache.js\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "大宾笔记",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "app\/platforms\/ios\/大宾笔记.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:dabin7360\/mobi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "701E7B02E9702528C1C02EDF5AB65C346F7FE7E4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/janl\/mustache.js.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8AC79CBDC8A36C3741BAC6C0A4B70CCA68D62318"
+    }
+  ]
+}
