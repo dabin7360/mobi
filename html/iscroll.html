@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>iscroll</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		#wraper{
+			height: 100%;
+		}
+		#wraper li{
+			height: 45px;
+			line-height: 45px;
+			border-bottom: 1px solid #dedede;
+			margin: 0 10px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>iscroll</h1>
+	</header>
+	<div class="demo_wrap">
+		<div id="wraper">
+			<div>
+				<ul>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+				</ul>
+				<ul>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>html基础知识</li>
+					<li>css基础知识</li>
+					<li>javascript基础知识</li>
+					<li>javascript基础知识</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/lib/iscroll-master/build/iscroll.js"></script>
+	<script>
+		var myScroll = new IScroll('#wraper',{
+			scrollbars: true, //激活滚动条
+			mouseWheel:false,
+			disableMouse: true,
+    		disablePointer: true
+
+		});
+	</script>
+</body>
