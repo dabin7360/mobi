@@ -19,7 +19,7 @@
 white-space:nowrap;
 text-overflow:ellipsis;</pre>
 		</code>
-		<h2>多行溢出省略号</h2>
+		<h2>多行溢出省略号(a标签上使用会出现问题)</h2>
 		<code>
 <pre>overflow:hidden;
 text-overflow:ellipsis;
@@ -68,6 +68,11 @@ window.onresize = function(){
 		<code>userselect:none</code>
 		<h2>禁用长按链接呼出对话框</h2>
 		<code>-webkit-touch-callout:none;</code>
+		<h2>加载完广告图后防止页面闪烁</h2>
+		<code>
+			子元素的paddingTop设为百分比时参照物是父元素的宽；<br/>
+			padding-top:h/w(转为百分比)
+		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>

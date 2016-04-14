@@ -32,6 +32,18 @@
 		<code>
 			&lt;script id="tmpl_id" type="text/x-tmpl"&gt;&lt;/script&gt;
 		</code>
+		<h2>for 循环的优化</h2>
+		<code>
+			for(var i=0; len=doms.length; i&lt;len; i++)<br/>
+			for(var i=doms.length; i--;)
+		</code>
+		<h2>字符串转换为数字</h2>
+		<code>
+			var str = "8";<br/>
+			var num = +str;<br/>
+			num = Number(str);<br/>
+			num = parseInt(str);
+		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>
