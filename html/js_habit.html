@@ -44,6 +44,18 @@
 			num = Number(str);<br/>
 			num = parseInt(str);
 		</code>
+		<h2>立即执行初始化并返回自身</h2>
+		<code>
+			var myCode = ({<br/>
+				attr1 : 'hello',<br/>
+				fun1 : function(){},<br/>
+				fun2 : function(){},<br/>
+				init : function(){<br/>
+					.......<br/>
+					return this;<br/>
+				}<br/>
+			}.init());
+		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>
