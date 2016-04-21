@@ -25,6 +25,17 @@ event.stopPropagation();</pre>
 			<pre>document.querySelector(".demo_wrap");
 document.querySelectorAll('p');</pre>
 		</code>
+		<h2>递归</h2>
+		<code>
+		function dg(n){<br/>
+			if(n==1){<br/>
+				return n;<br/>
+			}else{<br/>
+				retrun n * dg(n-1);<br/> 
+			}<br/>
+		}<br/>
+		dg(5);
+		</code>
 	</div>
 	<script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>
