@@ -41,6 +41,12 @@
 				init();<br/>
 			})<br/>
 		</code>
+		<h2>判断是否符合amd标准</h2>
+		<code>
+			if(typeof define === 'function' && define.amd){<br/>
+				define('mymod',['zepto'],function(){})<br/>
+			}
+		</code>
 	</div>
 	<script data-main="../js/dabin-require.js" src="../js/lib/require.js"></script>
 </body>
