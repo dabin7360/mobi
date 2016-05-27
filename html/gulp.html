@@ -1,0 +1,53 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>gulp--前端自动化工具</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<header>
+		<h1>gulp--前端自动化工具</h1>
+	</header>
+	<div class="demo_wrap">
+		<h2>发布npm</h2>
+		<code>
+			<ul>
+				<li>npm adduser</li>
+				<li>npm publish</li>
+			</ul>
+		</code>
+		<h2>更新npm</h2>
+		<code>
+			npm install npm
+		</code>
+		<h2>创建package.json</h2>
+		<code>
+			npm init
+		</code>
+		<code>
+			npm install <name> [-g] [--save-dev]<br/>
+			npm uninstall <name> [-g] [--save-dev]<br/>
+			npm update <name> [-g] [--save-dev]<br/>
+			npm install xxx@4.1.0<br/>
+			npm list<br/>
+		</code>
+		<h2>安装cnpm</h2>
+		<code>
+			npm install cnpm@3.2.0 -g --registry=https://registry.npm.taobao.org
+		</code>
+		<code>
+			var gulp = require("gulp");<br/>
+			gulp.task("hello",function(){<br/>
+				console.log("您好！");<br/>
+			})<br/>
+			gulp.task("default",["hello"]);<br/>
+		</code>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>
+</html>
