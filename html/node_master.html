@@ -1,0 +1,34 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>node爬虫</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+<body>
+	<header>
+		<h1>node爬虫</h1>
+	</header>
+	<div class="demo_wrap">
+		<h2>get请求</h2>
+		<code>
+			var http = require("http");<br/>
+			var url = "http://www.dyqfcl.com/know/7.html";<br/>
+			http.get(url,function(res){<br/>
+				var html = "";<br/>
+				res.on("data",function(data){<br/>
+					html += data<br/>
+				});<br/>
+				res.on('end',function(){<br/>
+					console.log(html);<br/>
+				});<br/>
+			}).on('error',function(){<br/>
+				console.log('无法请求');<br/>
+			})<br/>
+		</code>
+	</div>
+
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>
+</html>

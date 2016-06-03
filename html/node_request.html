@@ -1,0 +1,50 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>node_request</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+<body>
+	<header>
+		<h1>node_request</h1>
+	</header>
+	<div class="demo_wrap">
+		<h2>node_request</h2>
+		<code>
+			var http = require("http");<br/>
+			var querystring = require("querystring")<br/>
+			var postData = querystring.stringify({<br/>
+				'content' : '提交的内容',<br/>
+				'cid' : '775'<br/>
+			})<br/>
+			var opt = {<br/>
+				hostname : "www.imooc.com",<br/>
+				port : '80',<br/>
+				path : '/course/document',<br/>
+				method : 'POST'<br/>
+				headers : {}<br/>
+			}
+			var req = http.request(opt,function(res){<br/>
+				console.log("status : "+res.statusCode);<br/>
+				console.log(JSON.stringify(res.headers))<br/>
+				res.on('data',function(chunk){<br/>
+					console.log(Buffer.isBuffer(chunk))<br/>
+					console.log(typeof trunk)<br/>
+				})<br/>
+				res.on('end',function(){<br/>
+					console.log('end')<br/>
+				})<br/>
+			})<br/>
+			req.on('error',function(e){<br/>
+				console.log(e.message)<br/>
+			})<br/>
+			req.write(postData)<br/>
+			req.end()<br/>
+		</code>
+	</div>
+
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>
+</html>
