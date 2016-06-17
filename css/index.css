@@ -112,3 +112,7 @@ code {
   padding: 5px;
   background: #000;
   color: #FFF; }
+
+.demo_wrap {
+  width: 100%;
+  overflow: hidden; }

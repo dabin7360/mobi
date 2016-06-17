@@ -1,0 +1,157 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>css3_flip</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.card{
+			width: 49%;
+			height: 400px;
+			display: inline-block;
+			box-sizing: border-box;
+			margin-top: 50px;
+			-webkit-perspective:500px;
+			perspective: 500px;
+			border: 1px solid #000;
+		}
+		.card-sides{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			-webkit-transform-style:preserve-3d;
+			transform-style: preserve-3d;
+			transition:transform 1s;
+		}
+		.card-sides.along-left{
+			-webkit-transform-origin:center left;
+			transform-origin: center left;
+		}
+		.card-sides.along-left.flip{
+			-webkit-transform:translateX(100%) rotateY(180deg);
+			transform:translateX(100%) rotateY(180deg);
+		}
+		.card-sides.flip{
+			-webkit-transform:rotateY(180deg);
+			transform:rotateY(180deg);
+		}
+		.face{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			-webkit-backface-visibility:hidden;
+			backface-visibility: hidden;
+			font-size: 20px;
+			text-align: center;
+			line-height: 35px;
+			color: #FFF;
+			background: teal;
+			padding-top: 100px;
+		}
+		.face h3{
+			font-size: 30px;
+		}
+		.back{
+			-webkit-transform:rotateY(180deg);
+			transform: rotateY(180deg);
+			background: red;
+		}
+
+
+
+
+
+		.box-wrap{
+			width: 200px;
+			height: 200px;
+			margin:50px;
+			border: 1px solid #000;
+			-webkit-perspective:500px;
+			perspective: 500px;
+		}
+		.box{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			-webkit-transition:transform 1s;
+			transition: transform 1s;
+			-webkit-transform-origin:top center;
+			transform-origin: top center;
+			-webkit-transform-style:preserve-3d;
+			transform-style: preserve-3d;
+		}
+		.box.flip{
+			-webkit-transform:translateZ(-200px) rotateX(90deg);
+			transform: translateZ(-200px) rotateX(90deg);
+		}
+		.box-face{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		.box-bottom{
+			-webkit-transform:rotateX(90deg);
+			transform: rotateX(90deg);
+			-webkit-transform-origin: bottom center;
+			transform-origin: bottom center;
+		}
+		.box-front{
+			background: teal;
+		}
+		.box-front-cont{
+			width: 100%;
+			height: 100%;
+		}
+		.box-bottom .box-bottom-cont{
+			width: 100%;
+			height: 100%;
+			background: red;
+			color:#FFF;
+			-webkit-transform:rotateX(180deg);
+			transform: rotateX(180deg);
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>css3_flip</h1>
+	</header>
+	<div class="demo_wrap">
+		<div class="card">
+			<div class="card-sides">
+				<section class="face front"><h3>这里是正面</h3><p>点击翻转</p><p>center,center</p></section>
+				<section class="face back"><h3>这里是反面</h3><p>点击翻转</p><p>center,center</p></section>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-sides along-left">
+				<section class="face front"><h3>这里是正面</h3><p>点击翻转</p><p>center,left</p></section>
+				<section class="face back"><h3>这里是反面</h3><p>点击翻转</p><p>center,left</p></section>
+			</div>
+		</div>
+
+		<div class="box-wrap">
+			<div class="box">
+				<section class="box-face box-front">
+					<div class="box-front-cont">前面</div>
+				</section>
+				<section class="box-face box-bottom">
+					<div class="box-bottom-cont">下面下面下面下面下面下面下面下面下面下面下面</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script>
+		$('.card-sides').on('click',function(){
+			$(this).toggleClass('flip')
+		})
+		$('.box').on('click',function(){
+			$(this).toggleClass('flip')
+		})
+	</script>
+</body>
