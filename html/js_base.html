@@ -1,0 +1,147 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>js基础</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<header>
+		<h1>js基础</h1>
+	</header>
+	<div class="demo_wrap">
+		<h2>String</h2>
+		<code>
+			<p>length</p>
+			<p>+</p>
+			<p>charAt(index)</p>
+			<p>indexOf(str) , lastIndexOf(str) //没有找到则返回-1</p>
+			<p>substring(start,end) , substr(start,length)</p>
+			<p>replace()</p>
+			<p>split('#')</p>
+			<p>toUpperCase() , toLowerCase()</p>
+		</code>
+
+		<h2>Number</h2>
+		<code>
+			<p>toFixed(n) //n代表保留几位小数</p>
+			<p>toString()</p>
+			<p>parseInt(str)</p>
+			<p>Number(str) //+str,通过算数运算符转换为number</p>
+			<p>isNaN //NaN不等于任何数，包括他自身</p>
+		</code>
+		
+		<h2>bool</h2>
+		<code>
+			<p>"" == false</p>
+			<p>0 == false</p>
+			<p>[] == false , if([]){return true}</p>
+			<p>if(undefined){return false}</p>
+			<p>null == undefined </p>
+		</code>
+
+		<h2>undefined,null</h2>
+
+		<h2>Array</h2>
+		<code>
+			<p>shift() //删除第一个成员并返回第一个成员</p>
+			<p>pop() //删除最后一个成员并返回最后一个成员</p>
+			<p>unshift() //开头插入新成员,返回新len</p>
+			<p>push() //末尾插入新成员,返回新len</p>
+			<p>concat() //合并数组</p>
+			<p>slice(start,end) //截取数组</p>
+			<p>splice(start,length,ele1,ele2....) //截掉并插入</p>
+			<p>reverse() //倒序</p>
+			<p>sort() //排序</p>
+			<p>join('#') //转成字符串</p>
+			<p>map(function(i){}) //遍历数组</p>
+		</code>
+
+		<h2>Math</h2>
+		<code>
+			<p>Math.abs(num)</p>
+			<p>Math.ceil(num)</p>
+			<p>Math.floor(num) //Math.floor(-2.3) == -3</p>
+			<p>Math.random() //0~1随机数</p>
+			<p>Math.round(num) //四舍五入</p>
+		</code>
+
+		<h2>BOM</h2>
+		<code>
+			<dl>
+				<dt>window:</dt>
+				<dd>alert() , confirm() , prompt() , open() , close() , setInterval() , setTimeout() , requestAnimationFrame()</dd>
+			</dl>
+			<dl>
+				<dt>location:</dt>
+				<dd>href , host , origin , pathname , search , hash , protocol , reload()</dd>
+			</dl>
+			<dl>
+				<dt>history</dt>
+				<dd>length , back() , forward() , go()</dd>
+			</dl>
+			<dl>
+				<dt>Navigator</dt>
+				<dd>appName , appVersion , userAgent</dd>
+			</dl>
+			<dl>
+				<dt>screen</dt>
+				<dd>availWidth , availHeight</dd>
+			</dl>
+			<dl>
+				<dt>cookie , localStorage , sessionStorage</dt>
+			</dl>
+		</code>
+		<h2>DOM</h2>
+		<code>
+			<dl>
+				<dt>操作dom节点</dt>
+				<dd>getElementById() , getElementsByTagName() , getElementsByClassName() </dd>
+				<dd>dom.childNodes , dom.firstChild , dom.lastChild</dd>
+				<dd>createElement() , appendChild() , insertBefore(createdDom,whichDomBefore) , removeElement()</dd>
+				<dd>innerHTML , style</dd>
+				<dd>document.forms , selectDom.selectedIndex</dd>
+			</dl>
+		</code>
+		<h2>事件</h2>
+		<code>
+			<dl>
+				<dt>事件流:冒泡,捕获</dt>
+				<dd>dom.onclick</dd>
+				<dd>dom.addEventLitener('event',eventHandle,true) //默认为false冒泡，true时为捕获</dd>
+			</dl>
+			<dl>
+				<dt>阻止事件</dt>
+				<dd>event.stopPropagation();</dd>
+				<dd>event.preventDefault(); //阻止默认事件</dd>
+			</dl>
+		</code>
+		<h2>Ajax</h2>
+		<code>
+			<dl>
+				<dt>浏览器的同源策略</dt>
+				<dd>安全限制机制，限制不同源的document或者脚本之间的相互访问，以免造成干扰和混乱。</dd>
+				<dd>JSONP , 本地起服务器代理 , cors:Access-Control-Allow-Origin: http://blog.csdn.net</dd>
+			</dl>
+			<pre>var xmlhttp = new xmlHttpRequest();
+xmlhttp.onreadystatechange = stateChange;
+xmlhttp.open('GET',url,true);
+xmlhttp.send(null);
+function stateChange(){
+  if(xmlhttp.readyState == 4){
+    if(xmlhttp.status == 200){
+	 alert(xmlhttp.responseText);
+    }
+  }
+}
+			</pre>
+		</code>
+
+
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+</body>

@@ -13,6 +13,13 @@
 		<h1>正则表达式</h1>
 	</header>
 	<div class="demo_wrap">
+		<h2>元字符</h2>
+		<code>
+			<p>. [ab_d][a-zA-Z0-9][^abcd]</p>
+			<p>\d , \D , \w ,\W , \s , \S</p>
+			<p>* , ? , + , {2} , {2,5} , {2,}</p>
+			<p>.+? , .*?  //惰性匹配</p>
+		</code>
 		<code>
 <pre>var re=new RegExp('a','gi');
 var re=/a/gi;

@@ -116,3 +116,9 @@ code {
 .demo_wrap {
   width: 100%;
   overflow: hidden; }
+  .demo_wrap h2 {
+    height: 30px;
+    line-height: 30px;
+    padding: 10px 0 0 15px;
+    font-size: 25px;
+    font-weight: bold; }
