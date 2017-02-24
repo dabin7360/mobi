@@ -1,60 +1,82 @@
-.db-pop {
-  opacity: 0;
-  transition: opacity 1s;
-  position: absolute;
+.dabinPop {
+  position: fixed;
   left: 50%;
-  top: -webkit-calc(50% - 50px);
-  top: calc(50% - 50px);
-  width: 95%;
-  padding-bottom: 15px;
-  text-align: center;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  background-color: #96b97d;
-  box-shadow: 0 0 1px #FFF;
-  z-index: 1; }
-  .db-pop .pop-con {
-    padding: 10px 0 15px 0;
+  top: 50%;
+  background: #FFF;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+  -moz-transform: translate(-50%, -50%) scale(0);
+  -ms-transform: translate(-50%, -50%) scale(0);
+  -o-transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
+  -webkit-transition: -webkit-transform, 0.3s;
+  -moz-transition: -moz-transform, 0.3s;
+  transition: transform, 0.3s;
+  z-index: -1; }
+  .dabinPop.shwPop {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    -moz-transform: translate(-50%, -50%) scale(1);
+    -ms-transform: translate(-50%, -50%) scale(1);
+    -o-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 11; }
+  .dabinPop .dabinPop-con {
+    min-width: 200px;
+    max-width: 1000px;
+    padding: 30px 20px;
+    line-height: 30px;
     text-align: center;
-    line-height: 20px;
     font-size: 16px; }
-    .db-pop .pop-con .pop-con-title {
-      height: 38px;
-      line-height: 25px; }
-  .db-pop .cancel {
-    display: inline-block;
-    width: 35%;
-    height: 35px;
-    line-height: 35px;
-    background: gray;
-    border-radius: 5px;
-    color: #546a79; }
-  .db-pop .confirm {
-    display: inline-block;
-    width: 35%;
-    height: 35px;
-    line-height: 35px;
-    background: #3288e0;
-    border-radius: 5px; }
-  .db-pop .pop_btn {
-    display: inline-block;
-    width: 95%; }
-    .db-pop .pop_btn .cancel {
-      width: 45%;
-      float: left; }
-    .db-pop .pop_btn .confirm {
-      width: 45%;
-      float: right; }
+  .dabinPop .dabinPop-footer {
+    padding: 15px 0;
+    border-top: 1px solid #d1d1d1;
+    text-align: center; }
+  .dabinPop .pop-btn {
+    width: 80px;
+    height: 30px;
+    margin: 0 20px;
+    line-height: 30px;
+    text-align: center;
+    color: gray;
+    background: none;
+    border: 1px solid #d1d1d1;
+    cursor: pointer; }
+  .dabinPop .pop-confirm-btn {
+    border-color: #f15353;
+    background: #f15353;
+    color: #FFF; }
 
-.overlay {
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+  -moz-transform: translate(-50%, -50%) scale(0);
+  -ms-transform: translate(-50%, -50%) scale(0);
+  -o-transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
+  -webkit-transition: -webkit-transform, 0.3s;
+  -moz-transition: -moz-transform, 0.3s;
+  transition: transform, 0.3s;
+  z-index: -1;
+  max-width: 400px;
+  padding: 20px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #FFF;
+  text-align: center; }
+  .toast.shwPop {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    -moz-transform: translate(-50%, -50%) scale(1);
+    -ms-transform: translate(-50%, -50%) scale(1);
+    -o-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 11; }
+
+.layout {
   display: none;
-  position: absolute;
-  left: 0;
-  right: 0;
+  position: fixed;
   top: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 0; }
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10; }

@@ -28,9 +28,9 @@
 	</header>
 	<div class="height_wrap">
 		<div class="demo_wrap">
-			<span class="btn toast_btn">toast</span>
-			<span class="btn alert_btn">alert</span>
-			<span class="btn confirm_btn">confirm</span>
+			<span class="btn" id="toast_demo">toast</span>
+			<span class="btn" id="alert_demo">alert</span>
+			<span class="btn" id="confirm_demo">confirm</span>
 			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
 			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
 			<p>555555555555</p><p>555555555555</p><p>555555555555</p>
@@ -47,19 +47,40 @@
 			<p>555555555555</p><p>555555555555</p><p>111111111111</p>
 		</div>
 	</div>
-    <script src="../js/lib/zepto.js"></script>
-	<script src="../js/public.js"></script>
-	<script src="../js/pop.js"></script>
+    <script src="../js/lib/require.js"></script>
 	<script>
-		var myPop = new Pop();
-		$('.toast_btn').on('tap',function(){
-			myPop.toast('3秒之后我将消失!',3000);
+		require.config({
+			baseUrl : '../js/',
+			paths:{
+				zepto:'lib/zepto',
+				pubjs:'m-public',
+				dbPop:'module/dbPop'
+			},
+			shim:{
+				'zepto':{
+					exports:'$'
+				}
+			}
 		})
-		$('.alert_btn').on('tap',function(){
-			myPop.alert('alert!');
-		})
-		$('.confirm_btn').on('tap',function(){
-			myPop.confirm('confirm!');
+
+		require(['zepto','pubjs','dbPop'],function($,g,dbPop){
+			var confirm = dbPop('confirm'),
+				alert = dbPop('alert'),
+				toast = dbPop('toast');
+			$(document).on('tap',function(e){
+				var targetId = e.target.id;
+				switch(targetId){
+					case 'confirm_demo' :
+						confirm('我来演示confirm弹框!');
+						break;
+					case 'alert_demo' : 
+						alert('我来演示alert弹框');
+						break;
+					case 'toast_demo' :
+						toast('我来演示toast弹框');
+						break;
+				}
+			})
 		})
 	</script>
 </body>

@@ -1,0 +1,79 @@
+@import "bourbon";
+
+@mixin pop-ani-init{
+	@include transform(translate(-50%,-50%) scale(0));
+	@include transition(transform,0.3s);
+	z-index: -1;
+}
+@mixin pop-ani-active{
+	@include transform(translate(-50%,-50%) scale(1));
+	z-index: 11;
+}
+
+.dabinPop{
+	position: fixed;
+	left:50%;
+	top:50%;
+	background: #FFF;
+	@include pop-ani-init;
+	&.shwPop{
+		@include pop-ani-active;
+	}
+	.dabinPop-con{
+		min-width: 200px;
+		max-width: 1000px;
+		padding: 30px 20px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 16px;
+	}
+	.dabinPop-footer{
+		padding: 15px 0;
+		border-top: 1px solid #d1d1d1;
+		text-align: center;
+	}
+	.pop-btn{
+		width: 80px;
+		height: 30px;
+		margin: 0 20px;
+		line-height: 30px;
+		text-align: center;
+		color: gray;
+		background: none;
+		border: 1px solid #d1d1d1;
+		cursor: pointer;
+	}
+	.pop-confirm-btn{
+		border-color: #f15353;
+		background: #f15353;
+		color: #FFF;
+	}
+}
+.toast{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	@include pop-ani-init;
+	max-width: 400px;
+	padding: 20px 10px;
+	background-color: rgba(0,0,0,0.8);
+	color: #FFF;
+	text-align: center;
+	&.shwPop{
+		@include pop-ani-active;
+	}
+}
+
+.layout{
+	display: none;
+	position: fixed;
+	top: 0;
+	left:0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.6);
+	z-index: 10;
+}
+
+
+

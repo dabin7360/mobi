@@ -24,6 +24,20 @@
 	<div class="demo_wrap">
 		<div id="pad"></div>
 	</div>
+	<h2>tap的实现原理</h2>
+	<h2>tap点透事件</h2>
+	<p>原因：tap事件是通过冒泡到document上才触发的；click事件延迟触发；出发时已在最前面；</p>
+	<p>解决的方法：</p>
+	<code>
+		<p>
+			$(dom).on('touchend',function(e){<br/>
+				.......<br/>
+				e.preventDefault();<br/>
+			})
+		</p>
+	</code>
+	<p>最优雅的解决方式是缓动消失。</p>
+	<p>最懒的办法就是引入fastclick.js</p>
 	<script src="../js/lib/zepto.js"></script>
 	<script src="../js/public.js"></script>
 	<script>

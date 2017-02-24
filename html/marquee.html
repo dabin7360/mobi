@@ -1,0 +1,116 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>marquee</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.line-marq{width:80%; height: 30px; line-height: 30px; margin: 10px auto; border: 1px solid gray; overflow: hidden;}
+		.line-marq-wrap{width: 10000px; height: 30px;}
+		.line-marq-lst,.line-marq-lst-item{display: inline-block; float:left;}
+
+		.verticle-marq{width: 80%; height: 100px; line-height: 25px;margin: 10px auto; border: 1px solid gray; overflow: hidden;}
+		.verticle-marq-wrap{height: 100000px; height: 100px;}
+
+		.verticle-marq2{width: 80%; height: 30px; line-height: 30px;margin: 10px auto; border: 1px solid gray; overflow: hidden;}
+		.verticle-marq2-wrap{height: 100000px; height: 30px; transition: transform 1s;}
+
+	</style>
+</head>
+<body>
+	<header>
+		<h1>marquee</h1>
+	</header>
+	<div class="demo_wrap">
+		<div class="line-marq">
+			<div class="line-marq-wrap">
+				<ul class="line-marq-lst">
+					<li class="line-marq-lst-item">aaaaaaaaaaaaaaaaaaaa</li>
+					<li class="line-marq-lst-item">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</li>
+					<li class="line-marq-lst-item">cccccccccccccccccccccccccccccccccccccccc</li>
+					<li class="line-marq-lst-item">dddddddddddddddd</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="verticle-marq">
+			<div class="verticle-marq-wrap">
+				<ul class="verticle-marq-lst">
+					<li>aaaaaaaaa</li>
+					<li>bbbbbbbb</li>
+					<li>ccccccccc</li>
+					<li>dddddddddddddddd</li>
+					<li>eeeeeeeeeeee</li>
+					<li>ffffffffffffffff</li>
+					<li>ggggggggggggggggggg</li>
+					<li>hhhhhhh</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="verticle-marq2">
+			<div class="verticle-marq2-wrap">
+				<ul class="verticle-marq2-lst">
+					<li>aaaaaaaaa</li>
+					<li>bbbbbbbb</li>
+					<li>ccccccccc</li>
+					<li>dddddddddddddddd</li>
+				</ul>
+			</div>
+		</div>
+
+
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script>
+		(function(){
+			function dbMarq(marqWrap, marqLst, marqStyle, speed, range){
+				var	$lineMarqWrap = marqWrap,
+					returnPoint, cssTxt,
+					tx = 0,
+					sec = speed || 50,
+					step = range || 1;
+
+				var doMarq = function(){
+					if(tx <= -returnPoint){
+						tx = 0;
+					}else{
+						tx -= step;
+					}
+					if(range > 1){
+						$lineMarqWrap.css('transition','transform 1s');
+					}
+					$lineMarqWrap.css('transform',cssTxt+'('+tx+'px)');
+					if(range > 1 && tx <= -returnPoint){
+						setTimeout(function(){
+							tx = 0;
+							$lineMarqWrap.css('transition','transform 0s');
+							$lineMarqWrap.css('transform',cssTxt+'('+tx+'px)');
+							
+						},1000);
+					}
+					setTimeout(doMarq,sec);
+				}
+
+				if(marqStyle == 'verticle'){
+					returnPoint = marqLst.height();
+					cssTxt = 'translateY';
+				}else{
+					returnPoint = marqLst.width();
+					cssTxt = 'translateX';
+				}
+
+				$lineMarqWrap.append($lineMarqWrap.html());
+
+				doMarq();
+			}
+
+			dbMarq($('.line-marq-wrap'), $('.line-marq-lst'));
+			dbMarq($('.verticle-marq-wrap'), $('.verticle-marq-lst'),'verticle');
+			dbMarq($('.verticle-marq2-wrap'), $('.verticle-marq2-lst'),'verticle', 3000, 30);
+			
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>上传图片</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+</head>
+<body>
+	<header>
+		<h1>上传图片</h1>
+	</header>
+	<div class="demo_wrap">
+		<button id="uploadImg">上传图片</button>
+	</div>
+    <script src="../js/lib/require.js"></script>
+	<script>
+		require.config({
+			baseUrl : '../js/',
+			paths:{
+				zepto:'lib/zepto',
+				pubjs:'m-public',
+				upload:'module/upload'
+			},
+			shim:{
+				'zepto':{
+					exports:'$'
+				}
+			}
+		})
+
+		require(['zepto','pubjs','upload'],function($,g,upload){
+			upload('#uploadImg',{
+				url : '/fileupload/image',
+				data : {
+					'Filename' : 'liveIndexImg'
+				},
+				success : function(data){
+					if (data.success) {
+						console.log('成功,成功')
+					}else{
+						console.log('成功，失败')
+					}
+				}
+			})
+			
+		})
+	</script>
+</body>
