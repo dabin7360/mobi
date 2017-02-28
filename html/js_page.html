@@ -1,0 +1,139 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>js分页</title>
+	<link rel="stylesheet" type="text/css" href="../css/index.css">
+	<style>
+		.cont-list li{
+			height: 30px;
+			line-height: 30px;
+			padding: 0 15px;
+			border-bottom: 1px solid #dedede;
+		}
+		.page-wrap{
+			text-align: center;
+		}
+		.page-list{
+			display: inline-block;
+		}
+		.page-list li,
+		.page-arrow{
+			display: inline-block;
+			width: 23px;
+			height: 23px;
+			text-align: center;
+			line-height: 23px;
+			margin: 5px;
+			background: #FFF;
+			border: 1px solid gray;
+			color: teal;
+		}
+		.page-list li.active{
+			width: 25px;
+			height: 25px;
+			line-height: 25px;
+			border: none;
+			background: teal;
+			color: #FFF;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>js分页</h1>
+	</header>
+	<div class="demo_wrap">
+		<ul class="cont-list"></ul>
+		<div class="page-wrap">
+			<a href="javascrpt:void(0)" class="page-arrow" id="prevPage">&lt;</a>
+			<ul class="page-list"></ul>
+			<a href="javascrpt:void(0)" class="page-arrow" id="nextPage">&gt;</a>
+		</div>
+
+	</div>
+	<script src="../js/lib/zepto.js"></script>
+	<script src="../js/public.js"></script>
+	<script>
+		function JsPage(objData){
+			var newLst = [],
+				pageLstHtml = '',
+				contLstHtml = '',
+				$pageLst = objData.pageDom,
+				$contLst = objData.contDom;
+			newLst = (function(listArr,perLen){
+				var totalLen = listArr.length,
+					pageLen = Math.ceil(totalLen/perLen),
+					splitLst = [],
+					itemNo = 0;
+				for(var i=0; i<pageLen; i++){
+					splitLst[i] = [];
+					for(var l=itemNo; l<itemNo+perLen; l++){
+						if(!listArr[l]){
+							break;
+						}
+						splitLst[i].push(listArr[l])
+					}
+					itemNo += perLen;
+				}
+				return splitLst;
+			})(objData.list,objData.pageItemCount);
+			var renderPageLst = (function(){
+				for(var i=1; i<=newLst.length; i++){
+					pageLstHtml += '<li>'+i+'</li>';
+				}
+				$pageLst.html(pageLstHtml);
+			})();
+			var renderPageCont = function(pageIndex){
+				var thisPageArr = newLst[pageIndex-1];
+				if(pageIndex < 1 || pageIndex > newLst.length){return false;}
+				contLstHtml = '';
+				$pageLst.find('li').removeClass('active').eq(pageIndex-1).addClass('active');
+				for(var i=0; i<thisPageArr.length; i++){
+					contLstHtml += '<li>'+thisPageArr[i]+'</li>'
+				}
+				$contLst.html(contLstHtml);
+			}
+			renderPageCont('1');
+			var goToPrevPage = function(){
+				var curPageIndex = $pageLst.find('li.active').text();
+				if(curPageIndex > 1){
+					renderPageCont(curPageIndex-1);
+				}
+			};
+			var goToNxtPage = function(){
+				var curPageIndex = $pageLst.find('li.active').text();
+				if(curPageIndex < newLst.length){
+					renderPageCont(+curPageIndex + 1);
+				}
+			};
+			var bindEvent = (function(){
+				$pageLst.on('click','li',function(){
+					var pageIndex = $(this).text();
+					renderPageCont(pageIndex);
+				});
+				$('#prevPage').on('click',function(){
+					goToPrevPage();
+				});
+				$('#nextPage').on('click',function(){
+					goToNxtPage();
+				});
+			})();
+
+		}
+		
+		var list = [];
+		for(var i=1; i<53; i++){
+			list.push(i);
+		}
+		var jsPage = new JsPage({
+			list : list,
+			pageItemCount : 10,
+			pageDom : $('.page-list'),
+			contDom : $('.cont-list')
+		})
+
+		
+
+	</script>
+</body>
